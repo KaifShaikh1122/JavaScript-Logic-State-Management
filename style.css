@@ -1,0 +1,193 @@
+/* -------------------------------------------------------------
+   1. ADVANCED DYNAMIC VARIABLE SYSTEMS
+------------------------------------------------------------- */
+:root[data-theme="light"] {
+    --bg-main: #f8fafc;
+    --bg-surface: #ffffff;
+    --bg-element: #f1f5f9;
+    --text-main: #0f172a;
+    --text-muted: #475569;
+    --accent: #2563eb;
+    --accent-light: #dbeafe;
+    --border: #e2e8f0;
+    --shadow-sm: 0 2px 4px rgba(0,0,0,0.02);
+    --shadow-md: 0 10px 15px -3px rgba(15, 23, 42, 0.05);
+    --display-sun: block;
+    --display-moon: none;
+    --success: #16a34a;
+    --danger: #dc2626;
+}
+
+:root[data-theme="dark"] {
+    --bg-main: #080c14;
+    --bg-surface: #0f172a;
+    --bg-element: #1e293b;
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --accent: #3b82f6;
+    --accent-light: #1e3a8a;
+    --border: #1e293b;
+    --shadow-sm: 0 4px 6px rgba(0,0,0,0.2);
+    --shadow-md: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+    --display-sun: none;
+    --display-moon: block;
+    --success: #22c55e;
+    --danger: #ef4444;
+}
+
+:root {
+    --curve-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+    --transition-speed: 0.35s;
+}
+
+/* -------------------------------------------------------------
+   2. REFINED GLOBAL RULES AND VIEW ROUTING
+------------------------------------------------------------- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    transition: background-color var(--transition-speed) var(--curve-smooth), color var(--transition-speed) var(--curve-smooth);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.content-wrapper { padding: clamp(1.5rem, 5vw, 4rem) 1.25rem; max-width: 1240px; margin: 0 auto; flex: 1; width: 100%; }
+
+.tab-view { display: none; }
+.tab-view.active-view { display: block; }
+
+.nav-tab {
+    background: none; border: none; padding: 0.5rem 1rem; color: var(--text-muted);
+    font-weight: 600; cursor: pointer; transition: color 0.2s var(--curve-smooth);
+    position: relative;
+}
+.nav-tab.active { color: var(--accent); }
+.nav-tab.active::after {
+    content: ''; position: absolute; bottom: -1.4rem; left: 0; width: 100%; height: 3px; background-color: var(--accent);
+}
+
+/* -------------------------------------------------------------
+   3. MICR0-UI FLEXBOX ARCHITECTURE
+------------------------------------------------------------- */
+.main-header {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.25rem 1.5rem; background-color: var(--bg-surface);
+    border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; box-shadow: var(--shadow-sm);
+}
+
+.logo { font-size: 1.35rem; font-weight: 800; letter-spacing: -0.025em; }
+.logo span { color: var(--accent); }
+.nav-menu { display: flex; align-items: center; gap: 1.5rem; }
+
+.theme-btn {
+    display: flex; align-items: center; justify-content: center; width: 40px; height: 40px;
+    cursor: pointer; background-color: var(--bg-element); border: 1px solid var(--border);
+    border-radius: 50%; transition: transform 0.2s var(--curve-smooth);
+}
+.theme-btn:hover { transform: scale(1.1) rotate(12deg); }
+.theme-btn .icon-sun { display: var(--display-sun); }
+.theme-btn .icon-moon { display: var(--display-moon); }
+
+/* -------------------------------------------------------------
+   4. TWO-DIMENSIONAL AUTO-FLUID GRID MODULES
+------------------------------------------------------------- */
+.hero-section { text-align: center; margin-bottom: 4rem; }
+.badge {
+    display: inline-block; padding: 0.35rem 0.85rem; font-size: 0.75rem;
+    background-color: var(--accent-light); color: var(--accent); border-radius: 9999px; margin-bottom: 1.25rem; font-weight: 600;
+}
+.hero-section h1 { font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 800; margin-bottom: 1rem; letter-spacing: -0.04em; }
+
+.section-header { border-left: 4px solid var(--accent); padding-left: 0.75rem; margin-bottom: 2rem; }
+
+/* Fluid Auto Grid Grid Architecture */
+.grid-container { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); 
+    gap: 2rem; 
+}
+
+.grid-card {
+    background-color: var(--bg-surface); border: 1px solid var(--border); border-radius: 16px;
+    padding: 2rem; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; justify-content: space-between;
+    will-change: transform, box-shadow;
+    transition: transform 0.4s var(--curve-smooth), box-shadow 0.4s var(--curve-smooth), border-color var(--transition-speed);
+}
+.grid-card:hover { transform: translateY(-8px); border-color: var(--accent); box-shadow: var(--shadow-md); }
+
+.card-badge { align-self: flex-start; font-size: 0.7rem; font-weight: 700; color: var(--text-muted); background-color: var(--bg-element); padding: 0.2rem 0.5rem; border-radius: 4px; margin-bottom: 1.25rem; }
+.card-content h3 { margin-bottom: 0.5rem; font-size: 1.2rem; }
+.card-footer { display: flex; gap: 0.5rem; border-top: 1px solid var(--border); padding-top: 1rem; margin-top: 1.5rem; }
+.tech-tag { font-size: 0.75rem; color: var(--text-muted); background-color: var(--bg-element); padding: 0.15rem 0.5rem; border-radius: 4px; }
+
+/* -------------------------------------------------------------
+   5. DECOUPLED STATE SYSTEM HOOKS (Todo Dashboard Component)
+------------------------------------------------------------- */
+.todo-container {
+    max-width: 640px; margin: 2rem auto; background-color: var(--bg-surface);
+    border: 1px solid var(--border); border-radius: 20px; padding: 2.5rem; box-shadow: var(--shadow-md);
+}
+.todo-header { margin-bottom: 2rem; }
+.todo-header h2 { font-size: 1.6rem; font-weight: 800; }
+.todo-header p { color: var(--text-muted); font-size: 0.95rem; }
+
+.todo-form { display: flex; gap: 0.75rem; margin-bottom: 1.5rem; }
+.todo-form input {
+    flex: 1; padding: 0.85rem 1.25rem; border-radius: 10px; border: 1px solid var(--border);
+    background-color: var(--bg-main); color: var(--text-main); font-size: 0.95rem;
+    transition: border-color 0.2s var(--curve-smooth);
+}
+.todo-form input:focus { outline: none; border-color: var(--accent); }
+
+.todo-toolbar {
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+    padding-bottom: 1rem; border-bottom: 1px solid var(--border); font-size: 0.85rem; color: var(--text-muted);
+}
+.filter-group { display: flex; gap: 0.25rem; }
+.filter-btn {
+    background: none; border: none; padding: 0.35rem 0.65rem; border-radius: 6px;
+    color: var(--text-muted); cursor: pointer; font-weight: 600; transition: all 0.2s;
+}
+.filter-btn.active { background-color: var(--accent-light); color: var(--accent); }
+.clear-btn { background: none; border: none; color: var(--danger); cursor: pointer; font-weight: 600; }
+
+.todo-list { list-style: none; margin-top: 1.25rem; }
+.todo-item {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1rem 1.25rem; background-color: var(--bg-main); border: 1px solid var(--border);
+    border-radius: 12px; margin-bottom: 0.65rem; animation: fadeInUp 0.4s var(--curve-smooth) forwards;
+}
+.todo-item.completed .todo-text { text-decoration: line-through; color: var(--text-muted); opacity: 0.7; }
+.todo-item-left { display: flex; align-items: center; gap: 1rem; flex: 1; }
+
+.todo-checkbox {
+    width: 20px; height: 20px; border-radius: 6px; cursor: pointer;
+    accent-color: var(--accent);
+}
+.todo-text {
+    font-size: 0.95rem; font-weight: 500; color: var(--text-main); border: none;
+    background: transparent; width: 100%; transition: background-color 0.2s;
+}
+.todo-text:focus { outline: none; background-color: var(--bg-surface); padding: 0.25rem 0.5rem; border-radius: 6px; }
+.icon-btn { background: none; border: none; cursor: pointer; padding: 0.35rem; font-size: 1.1rem; border-radius: 6px; }
+.icon-btn:hover { background-color: var(--bg-element); }
+
+/* -------------------------------------------------------------
+   6. HIGH-PERFORMANCE ANIMATIONS
+------------------------------------------------------------- */
+@keyframes fadeInDown { from { opacity: 0; transform: translateY(-16px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+
+.animate-fade-down { animation: fadeInDown 0.5s var(--curve-smooth) forwards; }
+.animate-fade-in { animation: fadeInUp 0.6s var(--curve-smooth) forwards; }
+.animate-card { opacity: 0; animation: fadeInUp 0.6s var(--curve-smooth) forwards; animation-delay: calc(var(--stagger-index) * 0.08s); }
+
+@media (prefers-reduced-motion: reduce) {
+    * { animation-delay: 0s !important; animation-duration: 0s !important; transition-duration: 0s !important; transform: none !important; }
+}
+
+.main-footer { text-align: center; padding: 2.5rem 1.5rem; background-color: var(--bg-surface); color: var(--text-muted); font-size: 0.875rem; border-top: 1px solid var(--border); margin-top: auto; }

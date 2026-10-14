@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Architecture & State Logic Engine</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="main-header animate-fade-down">
+        <div class="logo">Architecture<span>Canvas</span></div>
+        <nav class="nav-menu" aria-label="Primary Navigation">
+            <button class="nav-tab active" data-target="portfolio-view">Showcase View</button>
+            <button class="nav-tab" data-target="todo-view">Task Engine State</button>
+        </nav>
+        <button id="theme-toggle" class="theme-btn" aria-label="Toggle theme mode">
+            <span class="icon-sun">☀️</span>
+            <span class="icon-moon">🌙</span>
+        </button>
+    </header>
+
+    <main class="content-wrapper">
+        <!-- View 1: Architecture Showcase -->
+        <div id="portfolio-view" class="tab-view active-view">
+            <section class="hero-section animate-fade-in">
+                <span class="badge">CSS3 Responsive System</span>
+                <h1>Semantic & Fluid Layout Designs</h1>
+                <p>A production-ready presentation showcase exploring pixel-perfect layout mechanics, multi-dimensional grid structures, and localized component control rules.</p>
+            </section>
+
+            <section class="portfolio-section">
+                <div class="section-header animate-fade-in">
+                    <h2>Project Architectural Showcase</h2>
+                    <p>Inspecting specialized UI layout paradigms across mobile, tablet, and wide desktop viewport layers.</p>
+                </div>
+
+                <div class="grid-container">
+                    <article class="grid-card animate-card" style="--stagger-index: 1;">
+                        <div class="card-badge">Grid Standard</div>
+                        <div class="card-content">
+                            <h3>01 / 2D CSS Grid Layouts</h3>
+                            <p>Utilizing structural CSS Grid matrices for complex, multi-axis element alignments without nested content wrappers.</p>
+                        </div>
+                        <div class="card-footer">
+                            <span class="tech-tag">CSS Grid</span>
+                            <span class="tech-tag">2-Dimensional</span>
+                        </div>
+                    </article>
+                    <article class="grid-card animate-card" style="--stagger-index: 2;">
+                        <div class="card-badge">Flexbox Component</div>
+                        <div class="card-content">
+                            <h3>02 / Localized Component Control</h3>
+                            <p>Employing Flexbox architectures safely inside localized UI layout units to guarantee predictable micro-element behaviors.</p>
+                        </div>
+                        <div class="card-footer">
+                            <span class="tech-tag">Flexbox</span>
+                            <span class="tech-tag">Micro-UI</span>
+                        </div>
+                    </article>
+                    <article class="grid-card animate-card" style="--stagger-index: 3;">
+                        <div class="card-badge">Fluid Fluidity</div>
+                        <div class="card-content">
+                            <h3>03 / Mobile-First Queries</h3>
+                            <p>Implementing a strict layout scaling process up from compact smartphones to high-resolution desktop viewports seamlessly.</p>
+                        </div>
+                        <div class="card-footer">
+                            <span class="tech-tag">Media Queries</span>
+                            <span class="tech-tag">Mobile-First</span>
+                        </div>
+                    </article>
+                    <article class="grid-card animate-card" style="--stagger-index: 4;">
+                        <div class="card-badge">Theme Controls</div>
+                        <div class="card-content">
+                            <h3>04 / Custom Engine Variables</h3>
+                            <p>Leveraging dynamic CSS root tokens to control contrast layers, visual tokens, and instant palette shifts cleanly.</p>
+                        </div>
+                        <div class="card-footer">
+                            <span class="tech-tag">CSS Variables</span>
+                            <span class="tech-tag">Dynamic Themes</span>
+                        </div>
+                    </article>
+                </div>
+            </section>
+        </div>
+
+        <!-- View 2: State-Driven Logic Engine -->
+        <div id="todo-view" class="tab-view">
+            <section class="todo-container animate-fade-in">
+                <div class="todo-header">
+                    <h2>JavaScript Task State Manager</h2>
+                    <p>Interactive client-side CRUD implementation utilizing structural data persistence.</p>
+                </div>
+
+                <form id="todo-form" class="todo-form">
+                    <input type="text" id="todo-input" placeholder="Enter task objective details..." required maxlength="120">
+                    <button type="submit" class="primary-btn">Deploy Task</button>
+                </form>
+
+                <div class="todo-toolbar">
+                    <span id="todo-count" class="todo-count">0 items left</span>
+                    <div class="filter-group">
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="active">Active</button>
+                        <button class="filter-btn" data-filter="completed">Completed</button>
+                    </div>
+                    <button id="clear-completed" class="clear-btn">Purge Completed</button>
+                </div>
+
+                <ul id="todo-list" class="todo-list"></ul>
+            </section>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>&copy; 2026 Advanced CSS3 & State Logic Architecture. Prepared for academic evaluation.</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
